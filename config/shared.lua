@@ -3,14 +3,14 @@ return {
         {
             coords = vec3(-265.0, -963.6, 31.2),
             showBlip = true,
-            blip = {
-                label = 'City Services',
-                shortRange = true,
-                sprite = 487,
-                display = 4,
-                scale = 0.65,
-                colour = 0,
-            },
+            -- blip = {
+            --     label = 'City Services',
+            --     shortRange = true,
+            --     sprite = 487,
+            --     display = 4,
+            --     scale = 0.65,
+            --     colour = 0,
+            -- },
             licenses = {
                 ['id'] = {
                     item = 'id_card',
@@ -32,7 +32,7 @@ return {
     },
 
     employment = {
-        enabled = true, -- Set to false to disable the employment menu
+        enabled = false, -- Set to false to disable the employment menu
         jobs = {
             unemployed = 'Unemployed',
             trucker = 'Trucker',
