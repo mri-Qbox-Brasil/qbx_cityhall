@@ -52,7 +52,7 @@ local function openIdentificationMenu(closestCityhall)
             title = id.label,
             description = locale('info.price', id.cost),
             onSelect = function()
-                lib.callback('qbx_cityhall:server:requestId', false, nil, item, closestCityhall)
+                lib.callback.await('qbx_cityhall:server:requestId', false, item, closestCityhall)
                 if not config.useTarget and inRangeCityhall then
                     lib.showTextUI(locale('info.open_cityhall'))
                 end
@@ -79,7 +79,7 @@ local function openEmploymentMenu()
         jobOptions[#jobOptions + 1] = {
             title = label,
             onSelect = function()
-                lib.callback('qbx_cityhall:server:applyJob', false, nil, job)
+                lib.callback.await('qbx_cityhall:server:applyJob', false, job)
                 if not config.useTarget and inRangeCityhall then
                     lib.showTextUI(locale('info.open_cityhall'))
                 end
@@ -176,6 +176,7 @@ local function spawnPeds()
         current.model = type(current.model) == 'string' and joaat(current.model) or current.model
         lib.requestModel(current.model, 5000)
         local ped = CreatePed(0, current.model, current.coords.x, current.coords.y, current.coords.z, current.coords.w, false, false)
+        SetModelAsNoLongerNeeded(current.model)
         FreezeEntityPosition(ped, true)
         SetEntityInvincible(ped, true)
         SetBlockingOfNonTemporaryEvents(ped, true)
